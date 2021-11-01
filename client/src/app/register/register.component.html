@@ -1,0 +1,93 @@
+<div class="row" [formGroup]="formGroup">
+    <h1>Sign Up</h1>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input matInput 
+                formControlName="firstnameControl" 
+                [(ngModel)]="firstName" >
+            <mat-error *ngIf="firstnameControl.hasError('required')">
+                This field is required
+            </mat-error>
+        </mat-form-field>
+
+    </p>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Last name</mat-label>
+            <input matInput 
+                formControlName="lastnameControl" 
+                [(ngModel)]="lastName">
+            <mat-error *ngIf="lastnameControl.hasError('required')">
+                This field is required
+            </mat-error>
+        </mat-form-field>
+
+    </p>
+
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput 
+                placeholder="Ex. yourmail@bookstore.com" 
+                formControlName="emailControl" 
+                [(ngModel)]="email">
+            <mat-error *ngIf="emailControl.invalid">
+                {{getErrorMessage()}}
+            </mat-error>
+        </mat-form-field>
+
+    </p>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="passwordControl" (input)="onPasswordInput()"
+                [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="passwordControl.hasError('required')">
+                This field is required
+            </mat-error>
+            <mat-error *ngIf="passwordControl.hasError('minlength')">
+                Password must have at least 6 characters
+            </mat-error>
+        </mat-form-field>
+
+    </p>
+    <p>
+        <mat-form-field class="example-full-width">
+            <mat-label>Confirm password</mat-label>
+            <input matInput 
+                formControlName="CfpasswordControl" 
+                type="password" 
+                (input)="onPasswordInput()"
+                [(ngModel)]="password">
+            <mat-error *ngIf="CfpasswordControl.hasError('required')">
+                Please confirm your password
+            </mat-error>
+            <mat-error *ngIf="CfpasswordControl.invalid && !CfpasswordControl.hasError('required')">
+                Passwords don't match
+            </mat-error>
+        </mat-form-field>
+
+    </p>
+    <p>
+        <mat-error *ngIf="errorMessage">
+            {{response.message}}
+        </mat-error>
+    </p>
+    <p>
+        <button mat-stroked-button [disabled]="!formGroup.valid" (click)="createAcc()">Create account</button>
+    </p>
+    <h3>OR</h3>
+    <p>
+        <button mat-stroked-button color="primary" (click)="signInWithGoogle()">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.16,22 12.25,22C17.6,22 21.5,18.33 21.5,12.91C21.5,11.76 21.35,11.1 21.35,11.1V11.1Z" />
+            </svg>
+            Login with Google
+        </button>
+    </p>
+</div>

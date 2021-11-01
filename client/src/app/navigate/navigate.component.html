@@ -1,0 +1,55 @@
+<div class="mat-app-background basic-container" *ngIf="!loged">
+    <button class="menu-icon" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <h4 class="user-name">Heolluuuu</h4>
+    <h1 class="title-menu">
+      <strong>
+        <a routerLink="" class="nav-link" routerLinkActive="active">
+          Weolcăme tu bóok storag
+        </a>
+      </strong>
+    </h1>
+    <mat-menu #menu="matMenu">
+      <a routerLink="register" class="nav-link">
+        <button mat-menu-item>
+          <mat-icon>add</mat-icon>
+          <span>Sign Up</span>
+        </button>
+      </a>
+      <a routerLink="login" class="nav-link">
+        <button mat-menu-item>
+          <mat-icon>move_to_inbox</mat-icon>
+          <span>Sign In</span>
+        </button>
+      </a>
+    </mat-menu>
+  </div>
+  
+  <div class="mat-app-background basic-container" *ngIf="loged">
+    <button class="menu-icon" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <h4 class="user-name">Heolluuuu {{lastName}}</h4>
+    <h1 class="title-menu">
+      <strong>
+        <a routerLink="" class="nav-link" routerLinkActive="active">
+          Weolcăme tu bóok storag
+        </a>
+      </strong>
+    </h1>
+    <mat-menu #menu="matMenu">
+      <a routerLink="profile" class="nav-link">
+        <button mat-menu-item>
+          <mat-icon>person_outline</mat-icon>
+          <span>Profile</span>
+        </button>
+      </a>
+      <a routerLink="" class="nav-link">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Log out</span>
+        </button>
+      </a>
+    </mat-menu>
+  </div>

@@ -1,0 +1,19 @@
+.column {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.row{
+    padding: 30px;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+    display: table;
+    clear: both;
+}
+@media screen and (max-width: 800px) {
+    .column {
+      width: 100%;
+    }
+}

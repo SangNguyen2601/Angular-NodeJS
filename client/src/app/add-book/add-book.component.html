@@ -1,0 +1,58 @@
+<div class="add-book" [formGroup]="formGroup">
+    <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input matInput 
+                #message 
+                maxlength="30" 
+                placeholder="Ex. Tôi thấy hoa vàng..." 
+                formControlName="titleControl" 
+                required 
+                [(ngModel)]="titleValue">
+        <button mat-button *ngIf="titleValue" matSuffix mat-icon-button aria-label="Clear" (click)="titleValue=''">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint align="end">Maximum characters allowed 
+            <strong>{{message.value.length}} / 30</strong>
+        </mat-hint>
+        <mat-error *ngIf="titleControl.hasError('required')">
+            This field is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="selectControl" required [(ngModel)]="selected">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="selectControl.hasError('required')">
+            This field is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Decription</mat-label>
+        <textarea rows=3 matInput 
+        formControlName="textAreaControl" 
+            required 
+            cdkTextareaAutosize 
+            [(ngModel)]="decriptionValue" ></textarea>
+        <button mat-button *ngIf="decriptionValue" matSuffix mat-icon-button aria-label="Clear" (click)="decriptionValue=''">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="textAreaControl.hasError('required')">
+            This field is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+</div>
+<div class="btn-sumit">
+    <button mat-stroked-button 
+    [disabled]="!checkLogin || !formGroup.valid"
+    (click)="addBook()"
+    type="submit">Add book</button>
+    <mat-error *ngIf="!checkLogin">
+        You need login to use this feature !
+    </mat-error>
+</div>

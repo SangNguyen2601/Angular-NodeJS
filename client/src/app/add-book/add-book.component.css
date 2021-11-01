@@ -1,0 +1,19 @@
+.add-book{
+    padding: 30px;
+}
+.example-full-width {
+    width: 80%;
+    margin-bottom: 10px;
+}
+.btn-sumit{
+    margin-bottom: 30px;
+}
+
+::ng-deep snack-bar-container.custom-class {
+    background-color: whitesmoke;
+    color: black;
+  }
+
+::ng-deep .custom-class .mat-simple-snackbar-action {
+    color: green;
+}

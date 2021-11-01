@@ -1,0 +1,30 @@
+version: '3'
+services:
+#mongose container
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+#server container
+  server:
+    build: server
+    command: npm install
+    image: server
+    volumes:
+      - ./server:/usr/src/app/server
+    #env_file: server/.env
+    ports:
+      - "3100:3100"
+    depends_on:
+      - mongo
+
+#client container
+  # client:
+  #   build: client
+  #   image: client
+  #   ports:
+  #     - "4200:4200"
+  #   depends_on:
+  #     - mongo
+  #     - server

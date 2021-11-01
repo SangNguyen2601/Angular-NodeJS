@@ -1,0 +1,28 @@
+.basic-container {
+    padding: 30px;
+    margin-bottom: 20px;
+    background-color: #D5D6D2;
+}
+.version-info {
+    font-size: 8pt;
+    float: right;
+    margin: 8px;
+}
+
+.menu-icon{
+    float:left;
+    }
+.user-name{
+    margin-top: 10px;
+    font-family:courier;
+}
+.title-menu{
+    text-align: center;
+    font-size: 30px;
+    font-family: courier;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
